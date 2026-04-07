@@ -55,13 +55,20 @@ const PROFILES = [
   },
 ];
 
-export default function ProfileSelect({ onNext }) {
+export default function ProfileSelect({ onNext, onBack }) {
   const { setProfile } = useProfile();
   const [selected, setSelected] = useState(null);
 
   const wrap = {
     flex: 1, display: 'flex', flexDirection: 'column', padding: '28px 20px',
   };
+  
+  const backBtn = {
+    alignSelf: 'flex-start', background: 'transparent', border: 'none',
+    padding: '0 0 16px 0', color: colors.textSecondary, fontSize: 14,
+    display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer',
+  };
+
   const heading = { fontSize: 22, fontWeight: 600, color: colors.textPrimary, marginBottom: 6 };
   const subhead = { fontSize: 14, color: colors.textSecondary, marginBottom: 24, lineHeight: 1.5 };
 
@@ -104,6 +111,14 @@ export default function ProfileSelect({ onNext }) {
 
   return (
     <div style={wrap}>
+      {onBack && (
+        <button style={backBtn} onClick={onBack}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Back
+        </button>
+      )}
       <div style={heading}>What describes you?</div>
       <div style={subhead}>
         This sets up the right alerts and display for you.

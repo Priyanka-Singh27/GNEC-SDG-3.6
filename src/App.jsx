@@ -36,10 +36,11 @@ export default function App() {
       {screen === 'welcome' &&
         <WelcomeScreen onNext={() => navigate('profile')} />}
       {screen === 'profile' &&
-        <ProfileSelect onNext={() => navigate('permissions')} />}
+        <ProfileSelect onNext={() => navigate('permissions')} onBack={() => navigate('welcome')} />}
       {screen === 'permissions' &&
         <PermissionsScreen
           onNext={() => navigate('loading')}
+          onBack={() => navigate('profile')}
           videoRef={videoRef}
           micStream={micStream}
           permissionError={permissionError}
